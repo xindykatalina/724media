@@ -1,0 +1,11 @@
+.div_usu{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 400px;
+}
+.div_info{
+    left: 450px;
+    position: absolute;
+    top: 380px;
+}
