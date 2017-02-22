@@ -29,7 +29,7 @@ if (!empty($_POST)) {
         }
     } elseif ($operacion == 'update') {
         $id_user = $_POST['id_user'];
-        $sql = "UPDATE user  SET name = ?, last_name = ?, image = ?,  WHERE id_user = ? ";
+        $sql = "UPDATE user  SET name = ?, last_name = ?, image = ?  WHERE id_user = ? ";
         $query = $pdo->prepare($sql);
         if ($query->execute(array($name, $last_name, $image, intval($id_user))) == false) {
             $msg = 'Error: ' . $query->errorCode();

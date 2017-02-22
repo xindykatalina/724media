@@ -17,18 +17,16 @@ function editar(id) {
         data: {operacion: 'update', id_user: id}
     }).done(function (html) {
         $('#contenido').html(html);
-    }).false(function () {
-        alert('Error al cargar modulo');
     });
 }
-function eliminar(id, este) {
+function eliminar(id, div) {
     $.ajax({
         type: "POST",
         url: "php/modeluser.php",
         data: {id_user: id, operacion: "delete"}
     }).done(function (msg) {
         //alert(msg);
-        $(este).parent().parent().remove();
+        $(div).parent().parent().remove();
     }).fail(function () {
         alert("Error enviando los datos. Intente nuevamente");
     });

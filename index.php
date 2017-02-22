@@ -23,6 +23,8 @@
 
     <!-- Morris Charts CSS -->
     <link href="resources/assets/libs/startmin-master/css/morris.css" rel="stylesheet">
+    <link href="css/user.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="resources/assets/libs/startmin-master/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -93,15 +95,15 @@
 	                    <h3 class="panel-title">Lista de Usuarios</h3>
 	                </div>
 	                <div class="panel-body">
-	                    <table class="table table-striped">
-	                        <thead>
-	                        <th>#</th>
-	                        <th>ID Usuario</th>
-	                        <th>Nombre</th>
-	                        <th>Apellido</th>
-	                        <th>Imagen</th>
-	                        <th>Editar</th>
-	                        <th>Eliminar</th>            
+	                    <table class="table">
+  							<thead class="thead-inverse">
+		                        <th>#</th>
+		                        <th>ID Usuario</th>
+		                        <th>Nombre</th>
+		                        <th>Apellido</th>
+		                        <th>Imagen</th>
+		                        <th>Editar</th>
+		                        <th>Eliminar</th>            
 	                        </thead>
 	                        <tbody>
 	                            <?php
