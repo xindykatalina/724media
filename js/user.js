@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#alerta').hide();
     $('#formulario').submit(function (event) {
         event.preventDefault();
@@ -13,7 +14,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "php/modeluser.php",
-            data: {name: $('#name').val(), last_name: $('#last_name').val(),
+            data: {name: $('#name').val(), last_name: $('#last_name').val(), email: $('#email').val(),
                 image: $('#image').val(), operacion: ope, id_user: id_u}
         }).done(function (msg) {
             alert(msg);
@@ -21,22 +22,25 @@ $(document).ready(function () {
                 $.ajax({
                     url: "user.php"
                 }).done(function (html) {
-                    //$('#contenido').html(html);
+                    //
                 }).fail(function () {
                     alert('Error al cargar modulo');
                 });
             } else {
                 $('#alerta').hide();
                 $('#name').val('');
+                $('#email').val('');
                 $('#last_name').val('');
                 $('#image').val('');
+                $("#targetLayer").html("No hay imagen");
+                $("#userImage").val('');
             }
         }).fail(function () {
             alert("Error enviando los datos. Intente nuevamente");
         });
     });
 
-
+    // Function Upload Image
     $("#uploadForm").on('submit',(function(e) {
         e.preventDefault();
         $.ajax({
@@ -48,12 +52,32 @@ $(document).ready(function () {
             processData:false,
             success: function(data)
             {
-            $("#targetLayer").html(data);
+                $("#image").val(data);
+                $("#targetLayer").html("<img class='img-responsive img-rounded center-block' src='" + data + "'width='300px' height='300px' alt='Bruce Wayne' title='Bruce Wayne'/>");
+                $("#image").html(data);
             },
             error: function() 
             {
+                alert("Error al subir la imagen");
             }           
        });
     }));
 
 });
+
+// Validation exists image
+var contenido = { 
+    loadimage : function(imagen){
+        if (imagen == 1) {
+            $("#targetLayer").html("No hay imagen")
+            } else {
+            $("#targetLayer").html("<img class='img-responsive img-rounded center-block' src='" + imagen + "'width='300px' height='300px' alt='Bruce Wayne' title='Bruce Wayne'/>")
+        }
+    }
+}
+
+var img = $("#image").val();
+    if (img != "") {
+       contenido.loadimage(img) 
+    }
+

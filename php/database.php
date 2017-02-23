@@ -1,4 +1,9 @@
 <?php
+/**
+* Class Database
+* @author TuProyecto || Desarrollador : @xindykatalina
+* @link http://TuProyecto.com
+*/
 class Database
 {
     private static $dbName = '724media' ;
@@ -14,7 +19,6 @@ class Database
    
     public static function connect()
     {
-       // One connection through whole application
        if ( null == self::$cont )
        {    
         try

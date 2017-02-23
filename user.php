@@ -4,8 +4,8 @@ require 'php/database.php';
 
 $name = '';
 $last_name = '';
+$email = '';
 $image = '';
-
 
 if (!empty($_POST)) {
 
@@ -24,9 +24,9 @@ if (!empty($_POST)) {
 
         $name = $data['name'];
         $last_name = $data['last_name'];
+        $email = $data['email'];
         $image = $data['image'];
     }
-    //$msg = '';
 }
 ?>
 <link href="css/user.css" rel="stylesheet" type="text/css"/>
@@ -34,41 +34,64 @@ if (!empty($_POST)) {
 
 <div class="containers">
     <div class="row">
-        <div class="col-sm-2 col-md-2">
-            <img class="img-responsive img-circle center-block" src="<?php echo $image; ?>" alt="Bruce Wayne" title="Bruce Wayne" width="300" height="300" />
+        <div class="pull-right">
+            <a href="index.php" class=""><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar</a>
         </div>
-        <div class="col-sm-4 col-md-4">
-            <form id="formulario" class="form-horizontal" role="form" >
-                <?php if ($operacion == 'update') {
-                    ?>
-                    <label for="id_user" >ID:</label>
-                    <input id="id_user" name="id_user" type="text" class="form-control" disabled value="<?php echo $id_user; ?>"/>
-                    <?php
-                }
-                ?>
-                <label for="name" >Nombre:</label>
-                <input id="name" name="name" type="text" class="form-control" placeholder="name" required value="<?php echo $name; ?>"/>
-                <label for="last_name" >Apelido:</label>
-                <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Apellido" value="<?php echo $last_name; ?>"/>
-                <label for="image" >Imagen:</label>
-                <input id="image" name="image" type="text" class="form-control" placeholder="Imagen" required value="<?php echo $image; ?>"/>
-                <br/>
-                <input type="submit" value="Guardar" class="btn btn-primary"/>
-                <a href="index.php" class="btn btn-primary"></i> Regresar</a>
-                                           
+        <div class="col-sm-6 col-md-6">
+            <form id="formulario" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <input type="submit" value="Guardar" class="btn btn-primary"/>
+                        <input type="reset" class="btn btn-default" value="Limpiar">
+                    </div>
+                </div>
+                 <?php if ($operacion == 'update') { ?>
+                    <div class="form-group">
+                        <label for="name" class="control-label col-xs-2">Id:</label>
+                        <div class="col-xs-10">
+                            <input id="id_user" name="id_user" type="text" class="form-control" disabled value="<?php echo $id_user; ?>"/>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <div class="form-group">
+                    <label for="name" class="control-label col-xs-2">Nombre:</label>
+                    <div class="col-xs-10">
+                        <input type="name" id="name" name="name" class="form-control" required placeholder="Nombre" value="<?php echo $name; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="last_name" class="control-label col-xs-2">Apellido:</label>
+                    <div class="col-xs-10">
+                        <input type="name" id="last_name" name="last_name" class="form-control"  required placeholder="Apellido" value="<?php echo $last_name; ?>">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="control-label col-xs-2">Email:</label>
+                    <div class="col-xs-10">
+                        <input type="name" id="email" name="email" class="form-control" required placeholder="Email" value="<?php echo $email; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image" class="control-label col-xs-2">Imagen:</label>
+                    <div class="col-xs-10">
+                        <div id="targetLayer">No Image</div>
+                        <input type="hidden" id="image" name="image" class="form-control" placeholder="Imagen" value="<?php echo $image; ?>">
+                    </div>
+                </div>                      
             </form>
 
+            <form id="uploadForm" action="upload.php" method="post" class="form-horizontal" >
+                <div class="form-group">
+                    <label for="name" class="control-label col-xs-2">Upload:</label>
+                    <div class="col-xs-10">
+                        <div id="uploadFormLayer"></div>
+                            <input id="userImage" name="userImage" type="file" class="inputFile" />
+                            <input type="submit" value="Submit" class="btnSubmit" />
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
- <div class="bgColor">
-        <form id="uploadForm" action="upload.php" method="post">
-            <div id="targetLayer">No Image</div>
-            <div id="uploadFormLayer">
-            <label>Upload Image File:</label><br/>
-            <input name="userImage" type="file" class="inputFile" />
-            <input type="submit" value="Submit" class="btnSubmit" />
-        </form>
-        </div>
-    </div>

@@ -5,15 +5,16 @@ if (!empty($_POST)) {
     $msg = '';
     $name = $_POST['name'];
     $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
     $image = $_POST['image'];
     $operacion = $_POST['operacion'];
     $pdo = database::connect();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if ($operacion == 'insert') {
-        $sql = "INSERT INTO user (name, last_name, image)"
-                . "VALUES(?,?,?)";
+        $sql = "INSERT INTO user (name, last_name, email, image)"
+                . "VALUES(?,?,?,?)";
         $query = $pdo->prepare($sql);
-        if ($query->execute(array($name, $last_name, $image)) == false) {
+        if ($query->execute(array($name, $last_name, $email,  $image)) == false) {
             $msg = 'Error: ' . $query->errorCode();
         } else {
             $msg = 'Usuario creado';
@@ -29,9 +30,9 @@ if (!empty($_POST)) {
         }
     } elseif ($operacion == 'update') {
         $id_user = $_POST['id_user'];
-        $sql = "UPDATE user  SET name = ?, last_name = ?, image = ?  WHERE id_user = ? ";
+        $sql = "UPDATE user  SET name = ?, last_name = ?, email = ?, image = ?  WHERE id_user = ? ";
         $query = $pdo->prepare($sql);
-        if ($query->execute(array($name, $last_name, $image, intval($id_user))) == false) {
+        if ($query->execute(array($name, $last_name, $email, $image, intval($id_user))) == false) {
             $msg = 'Error: ' . $query->errorCode();
         } else {
             $msg = 'Usuario Actualizado';
