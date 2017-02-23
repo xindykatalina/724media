@@ -96,7 +96,8 @@
                                         <th>Apellido</th>
         		                        <th>Email</th>
         		                        <th>Imagen</th>
-        		                        <th>Editar</th>
+        		                        <th>Ver</th>
+                                        <th>Editar</th>
         		                        <th>Eliminar</th>            
         	                        </thead>
         	                        <tbody>
@@ -113,7 +114,8 @@
                                             echo '<td>' . $row['last_name'] . '</td>';
         	                                echo '<td>' . $row['email'] . '</td>';
         	                                echo '<td>' . $row['image'] . '</td>';
-        	                                echo '<td><button class="btn btn-info" onclick="editar(' . $row['id_user'] . ')">Editar</button></td>';
+                                            echo '<td><button class="btn btn-info" onclick="show(' . $row['id_user'] . ')">Ver</button></td>';
+                                            echo '<td><button class="btn btn-info" onclick="update(' . $row['id_user'] . ')">Editar</button></td>';
         	                                echo '<td><button class="btn btn-danger" onclick="eliminar(' . $row['id_user'] . ', this)">Eliminar</button></td>';
         	                                echo '</tr>';
         	                                $con++;

@@ -9,8 +9,7 @@ $(document).ready(function () {
         });
     });
 });
-function editar(id) {
-    console.log('idd', id);
+function update(id) {
     $.ajax({
         type: "POST",
         url: "user.php",
@@ -29,5 +28,14 @@ function eliminar(id, div) {
         $(div).parent().parent().remove();
     }).fail(function () {
         alert("Error enviando los datos. Intente nuevamente");
+    });
+}
+function show(id) {
+    $.ajax({
+        type: "POST",
+        url: "show.php",
+        data: {operacion: 'update', id_user: id}
+    }).done(function (html) {
+        $('#contenido').html(html);
     });
 }

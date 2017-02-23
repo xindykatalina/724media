@@ -2,7 +2,7 @@
 /**
 * Class Database
 * @author TuProyecto || Desarrollador : @xindykatalina
-* @link http://TuProyecto.com
+* @link http://724media.com
 */
 class Database
 {
